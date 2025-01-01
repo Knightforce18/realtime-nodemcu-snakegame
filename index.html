@@ -1,0 +1,61 @@
+                                                                                      <!-- Display page -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NodeMCU Snake Game</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background-color: #1e3c72;
+      color: white;
+    }
+    canvas {
+      border: 3px solid #333;
+      background-color: #e0e0e0;
+      margin-top: 20px;
+    }
+    h1 {
+      color: #f39c12;
+    }
+    #score {
+      color: #f39c12;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>NodeMCU Snake Game</h1>
+  <div id="score">Score: 0 | High Score: 0</div>
+  <canvas id="gameCanvas" width="640" height="480"></canvas>
+  <script>
+    const ws = new WebSocket('ws://192.168.4.1:81');
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const scoreDiv = document.getElementById('score');
+    let highScore = 0;
+    ws.onmessage = (event) => {
+      const gameState = JSON.parse(event.data);
+      drawGame(gameState);
+      updateScore(gameState.score, gameState.highScore);
+    };
+    function drawGame(gameState) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'green';
+      for (let i = 0; i < gameState.snake.length; i++) {
+        const segment = gameState.snake[i];
+        ctx.fillRect(segment.x * 20, segment.y * 20, 20, 20);
+      }
+      ctx.fillStyle = 'red';
+      ctx.beginPath();
+      const foodX = gameState.food.x * 20 + 10;
+      const foodY = gameState.food.y * 20 + 10;
+      ctx.arc(foodX, foodY, 10, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    function updateScore(score, highScore) {
+      scoreDiv.textContent = `Score: ${score} | High Score: ${highScore}`;
+    }
+  </script>
+</body>
+</html>
