@@ -69,14 +69,14 @@ To ge the NodeMCU Snake Game working correctly, follow these steps :
   const char* ssid = "MiniProject"; <br>
   const char* password = "911911911";
 * Connect your phone and a laptop to this network.
----
+
 ### Start Playing
 * open the browser and visit  http://192.168.4.1 to see the game display.
 * On another device,visit  http://192.168.4.1/controller to open the controller page.
 * Start controlling the snake and beat your high score!!
   
   Note : for Display page A big display is preffered like laptop or computer.
-
+---
   
   
 
