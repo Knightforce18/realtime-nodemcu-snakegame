@@ -1,1 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Snake Game Controller</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(to bottom, #1e3c72, #2a5298);
+      margin: 0;
+    }
+    .container {
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      width: 320px;
+    }
+    h1 {
+      color: #333;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 25px;
+      font-size: 24px;
+      margin: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 15px rgba(52, 152, 219, 0.3);
+    }
+    button:hover {
+      background-color: #2980b9;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(52, 152, 219, 0.5);
+    }
+    button:active {
+      transform: translateY(2px);
+      box-shadow: 0 3px 10px rgba(52, 152, 219, 0.4);
+    }
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      grid-template-rows: 1fr 1fr 1fr;
+      margin-top: 20px;
+      justify-items: center;
+    }
+    .controls button {
+      width: 80px;
+      height: 80px;
+    }
+    .up {
+      grid-column: 2;
+      grid-row: 1;
+    }
+    .down {
+      grid-column: 2;
+      grid-row: 3;
+    }
+    .left {
+      grid-column: 1;
+      grid-row: 2;
+    }
+    .right {
+      grid-column: 3;
+      grid-row: 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Snake Game Controller</h1>
+    <div class="controls">
+      <button class="up" onclick="sendCommand('up')">&#8593;</button>
+      <button class="left" onclick="sendCommand('left')">&#8592;</button>
+      <button class="right" onclick="sendCommand('right')">&#8594;</button>
+      <button class="down" onclick="sendCommand('down')">&#8595;</button>
+    </div>
+  </div>
+  <script>
+    const ws = new WebSocket('ws://192.168.4.1:81');
+    function sendCommand(command) {
+      ws.send(command);
+    }
+  </script>
+</body>
+</html>
 
