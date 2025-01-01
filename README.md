@@ -1,21 +1,23 @@
 # realtime-nodemcu-snakegame
 
+# Note: The game can be run directly by uploading the `realtime-nodemcu-snakegame-sketch.ino` to the NodeMCU. Then, visit the display page (http://192.168.4.1) on one device and the controller page (http://192.168.4.1/controller) on another device using a browser.
 
 # Table of Contents
 
 1. [Introduction]
 
-2. [Features]
+3. [Features]
 
-3. [System-Architecture]
+4. [System-Architecture]
 
-4. [Getting-Started]
+5. [Getting-Started]
 
-5. [How-it-Works]
+6. [How-it-Works]
 
-6. [Screenshots]
+7. [Screenshots]
 
-7. [License]
+8. [License]
+
 
 
 
