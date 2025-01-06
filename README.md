@@ -66,8 +66,10 @@ To ge the NodeMCU Snake Game working correctly, follow these steps :
   
   Note : You can change the ssid and password according to you by chaning these lines in the sketch code:
   
-  const char* ssid = "MiniProject"; <br>
-  const char* password = "911911911";
+```bash
+ const char* ssid = "MiniProject"; <br>
+  const char* password = "911911911"; 
+  ```
 * Connect your phone and a laptop to this network.
 
 ### Start Playing
